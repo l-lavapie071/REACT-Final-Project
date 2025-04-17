@@ -1,0 +1,42 @@
+
+.custom-swiper .swiper-button-next,
+.custom-swiper .swiper-button-prev {
+  width: 30px;
+  height: 30px;
+  font-size: 12px;
+  background-color: rgba(0, 0, 0, 0.1); 
+  border-radius: 50%;
+  color: #3498db; 
+}
+
+/* Change arrow icon color */
+.custom-swiper .swiper-button-next::after,
+.custom-swiper .swiper-button-prev::after {
+  font-size: 14px;
+  color: #3498db; 
+}
+
+
+.custom-swiper .swiper-button-next:hover,
+.custom-swiper .swiper-button-prev:hover {
+  background-color: rgba(0, 0, 0, 0.2); /* Darker hover background */
+  color: #e74c3c; 
+}
+
+/* Ensure slides are bigger */
+/* .stock-news-slider {
+  height: 200px; 
+} */
+
+.custom-swiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+
+.stock-news-slider .stock-news-item {
+  font-size: 1.1rem;
+  padding: 20px;
+}

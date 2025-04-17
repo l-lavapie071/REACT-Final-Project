@@ -17,7 +17,7 @@ function SearchBar({ onSearch }) {
         <input
           type="text"
           className="form-control"
-          placeholder="Enter stock symbol (e.g. AAPL)"
+          placeholder="Search Keyword..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />

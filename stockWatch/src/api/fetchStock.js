@@ -22,6 +22,29 @@ export const fetchStockQuote = async (symbol) => {
   return data;
 };
 
+export const fetchStockDetails = async (symbol) => {
+  const cleanedSymbol = symbol.trim().toUpperCase();
+  const url = `https://yahoo-finance15.p.rapidapi.com/api/v1/markets/stock/quotes?ticker=${cleanedSymbol}`;
+  const apiKey = import.meta.env.VITE_ALPHA_API_KEY;
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      "X-RapidAPI-Key": "a183e3f8fbmsh88a0b7800897231p183d3ejsn311f31d0e8e1",
+      //"X-RapidAPI-Key": "68ccbe0c74msh7292dfc8f894f45p1c500djsn626db8f2cce7",
+      "X-RapidAPI-Host": "yahoo-finance15.p.rapidapi.com"
+    }
+  });
+  
+  if (!response.ok) {
+    throw new Error("Failed to fetch stock data.");
+  }
+
+  const data = await response.json();
+  //console.log(data.length);
+  //console.log(data[0]);
+  return data;
+};
+
 export const fetchMostActiveStocks = async () => {
   const url = "https://yahoo-finance15.p.rapidapi.com/api/v1/markets/options/most-active?type=STOCKS";
 
