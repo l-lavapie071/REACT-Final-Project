@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { fetchStockDetails } from "../api/fetchStock";
+import watchList from "../json/watchList.json";
 
 const StockDetails = () => {
   const { symbol } = useParams();
@@ -28,6 +29,34 @@ const StockDetails = () => {
 
   const handleBack = () => {
     navigate(-1);
+  };
+  useEffect(() => {
+    const localData = localStorage.getItem("watchlist");
+    if (!localData) {
+      localStorage.setItem("watchlist", JSON.stringify(watchList));
+    }
+  }, []);
+
+  const handleAddToWatchlist = () => {
+    const symbol = stockDetails?.symbol;
+    if (!symbol) return;
+
+    // Get current watchlist from localStorage or default to empty array
+    let currentList = JSON.parse(localStorage.getItem("watchlist")) || [];
+
+    if (!currentList.includes(symbol)) {
+      currentList.push(symbol);
+      localStorage.setItem("watchlist", JSON.stringify(currentList));
+      alert(`${symbol} added to Watchlist`);
+    } else {
+      alert(`${symbol} is already in your Watchlist`);
+    }
+    navigate(`/watchlist`);
+  };
+
+  const handleAddToPortfolio = () => {
+    const symbol = stockDetails?.symbol;
+    console.log(symbol);
   };
 
   const formatNumber = (num) =>
@@ -60,10 +89,16 @@ const StockDetails = () => {
             {s?.longName || s?.symbolName} ({s?.symbol})
           </h2>
           <div>
-            <button className="btn btn-outline-primary btn-sm me-2">
+            <button
+              className="btn btn-outline-primary btn-sm me-2"
+              onClick={handleAddToWatchlist}
+            >
               Add to Watch List
             </button>
-            <button className="btn btn-outline-primary btn-sm me-2">
+            <button
+              className="btn btn-outline-primary btn-sm me-2"
+              onClick={handleAddToPortfolio}
+            >
               Add to My Portfolio
             </button>
           </div>

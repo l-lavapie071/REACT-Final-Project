@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
+  Link,
   useLocation,
 } from "react-router-dom";
 import "swiper/css";
@@ -19,6 +20,8 @@ import StockNewsItem from "./components/StockNewsItem";
 import StockDetails from "./components/StockDetails";
 import { fetchMostActiveStocks, fetchStockNews } from "./api/fetchStock";
 import "./App.css";
+import WatchList from "./components/WatchList";
+import watchListData from "./json/watchList.json";
 
 function MainContent({
   searchQuery,
@@ -166,21 +169,35 @@ function AppWrapper() {
     }
   }, [mostActiveStocks]);
 
+  useEffect(() => {
+    const localData = localStorage.getItem("watchlist");
+    if (!localData) {
+      localStorage.setItem("watchlist", JSON.stringify(watchListData));
+    }
+  }, []);
+
   return (
     <>
       <Header />
-      {!isStockDetailPage && (
-        <MainContent
-          searchQuery={searchQuery}
-          handleSearch={handleSearch}
-          mostActiveStocks={mostActiveStocks}
-          isLoading={isLoading}
-          error={error}
-          stockNews={stockNews}
-        />
-      )}
+      {/* Routing and page-specific rendering */}
       <Routes>
+        <Route
+          path="/"
+          element={
+            !isStockDetailPage && (
+              <MainContent
+                searchQuery={searchQuery}
+                handleSearch={handleSearch}
+                mostActiveStocks={mostActiveStocks}
+                isLoading={isLoading}
+                error={error}
+                stockNews={stockNews}
+              />
+            )
+          }
+        />
         <Route path="/stock/:symbol" element={<StockDetails />} />
+        <Route path="/watchlist" element={<WatchList />} />
       </Routes>
     </>
   );

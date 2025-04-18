@@ -6,8 +6,8 @@ export const fetchStockQuote = async (symbol) => {
   const response = await fetch(url, {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "a183e3f8fbmsh88a0b7800897231p183d3ejsn311f31d0e8e1",
-      //"X-RapidAPI-Key": "68ccbe0c74msh7292dfc8f894f45p1c500djsn626db8f2cce7",
+      //"X-RapidAPI-Key": "a183e3f8fbmsh88a0b7800897231p183d3ejsn311f31d0e8e1",
+      "X-RapidAPI-Key": "68ccbe0c74msh7292dfc8f894f45p1c500djsn626db8f2cce7",
       "X-RapidAPI-Host": "yahoo-finance15.p.rapidapi.com"
     }
   });
@@ -29,8 +29,8 @@ export const fetchStockDetails = async (symbol) => {
   const response = await fetch(url, {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "a183e3f8fbmsh88a0b7800897231p183d3ejsn311f31d0e8e1",
-      //"X-RapidAPI-Key": "68ccbe0c74msh7292dfc8f894f45p1c500djsn626db8f2cce7",
+      //"X-RapidAPI-Key": "a183e3f8fbmsh88a0b7800897231p183d3ejsn311f31d0e8e1",
+      "X-RapidAPI-Key": "68ccbe0c74msh7292dfc8f894f45p1c500djsn626db8f2cce7",
       "X-RapidAPI-Host": "yahoo-finance15.p.rapidapi.com"
     }
   });
@@ -51,8 +51,8 @@ export const fetchMostActiveStocks = async () => {
   const response = await fetch(url, {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "a183e3f8fbmsh88a0b7800897231p183d3ejsn311f31d0e8e1",
-      //"X-RapidAPI-Key": "68ccbe0c74msh7292dfc8f894f45p1c500djsn626db8f2cce7",
+      //"X-RapidAPI-Key": "a183e3f8fbmsh88a0b7800897231p183d3ejsn311f31d0e8e1",
+      "X-RapidAPI-Key": "68ccbe0c74msh7292dfc8f894f45p1c500djsn626db8f2cce7",
       "X-RapidAPI-Host": "yahoo-finance15.p.rapidapi.com"
     }
   });
@@ -79,8 +79,8 @@ export const fetchStockNews = async (tickers) => {
     method: "GET",
     headers: {
       //
-      "X-RapidAPI-Key": "a183e3f8fbmsh88a0b7800897231p183d3ejsn311f31d0e8e1",
-      //"X-RapidAPI-Key": "68ccbe0c74msh7292dfc8f894f45p1c500djsn626db8f2cce7",
+      //"X-RapidAPI-Key": "a183e3f8fbmsh88a0b7800897231p183d3ejsn311f31d0e8e1",
+      "X-RapidAPI-Key": "68ccbe0c74msh7292dfc8f894f45p1c500djsn626db8f2cce7",
       "X-RapidAPI-Host": "yahoo-finance15.p.rapidapi.com"
     }
   });
