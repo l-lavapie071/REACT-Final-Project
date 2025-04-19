@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Link,
   useLocation,
 } from "react-router-dom";
 import "swiper/css";
@@ -22,6 +21,7 @@ import { fetchMostActiveStocks, fetchStockNews } from "./api/fetchStock";
 import "./App.css";
 import WatchList from "./components/WatchList";
 import Portfolio from "./components/Portfolio";
+import ChatBox from "./components/ChatBox";
 
 function MainContent({
   searchQuery,
@@ -147,7 +147,6 @@ function AppWrapper() {
       }
     };
 
-    // Fetch only on homepage
     if (location.pathname === "/") {
       loadMostActive();
     }
@@ -172,17 +171,9 @@ function AppWrapper() {
     }
   }, [mostActiveStocks]);
 
-  /* useEffect(() => {
-    const localData = localStorage.getItem("watchlist");
-    if (!localData) {
-      localStorage.setItem("watchlist", JSON.stringify(watchListData));
-    }
-  }, []); */
-
   return (
     <>
       <Header />
-      {/* Routing and page-specific rendering */}
       <Routes>
         <Route
           path="/"
@@ -202,6 +193,7 @@ function AppWrapper() {
         <Route path="/stock/:symbol" element={<StockDetails />} />
         <Route path="/watchlist" element={<WatchList />} />
         <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/chat" element={<ChatBox />} />
       </Routes>
     </>
   );
