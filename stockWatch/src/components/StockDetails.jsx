@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { fetchStockDetails } from "../api/fetchStock";
-import watchList from "../json/watchList.json";
+//import watchList from "../json/watchList.json";
 
 const StockDetails = () => {
   const { symbol } = useParams();
@@ -54,11 +54,6 @@ const StockDetails = () => {
     navigate(`/watchlist`);
   };
 
-  const handleAddToPortfolio = () => {
-    const symbol = stockDetails?.symbol;
-    console.log(symbol);
-  };
-
   const formatNumber = (num) =>
     num !== null && num !== undefined
       ? typeof num === "number"
@@ -94,12 +89,6 @@ const StockDetails = () => {
               onClick={handleAddToWatchlist}
             >
               Add to Watch List
-            </button>
-            <button
-              className="btn btn-outline-primary btn-sm me-2"
-              onClick={handleAddToPortfolio}
-            >
-              Add to My Portfolio
             </button>
           </div>
         </div>

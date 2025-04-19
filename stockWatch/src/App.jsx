@@ -21,7 +21,7 @@ import StockDetails from "./components/StockDetails";
 import { fetchMostActiveStocks, fetchStockNews } from "./api/fetchStock";
 import "./App.css";
 import WatchList from "./components/WatchList";
-import watchListData from "./json/watchList.json";
+import Portfolio from "./components/Portfolio";
 
 function MainContent({
   searchQuery,
@@ -147,8 +147,11 @@ function AppWrapper() {
       }
     };
 
-    loadMostActive();
-  }, []);
+    // Fetch only on homepage
+    if (location.pathname === "/") {
+      loadMostActive();
+    }
+  }, [location.pathname]);
 
   useEffect(() => {
     if (mostActiveStocks.length > 0) {
@@ -169,12 +172,12 @@ function AppWrapper() {
     }
   }, [mostActiveStocks]);
 
-  useEffect(() => {
+  /* useEffect(() => {
     const localData = localStorage.getItem("watchlist");
     if (!localData) {
       localStorage.setItem("watchlist", JSON.stringify(watchListData));
     }
-  }, []);
+  }, []); */
 
   return (
     <>
@@ -198,6 +201,7 @@ function AppWrapper() {
         />
         <Route path="/stock/:symbol" element={<StockDetails />} />
         <Route path="/watchlist" element={<WatchList />} />
+        <Route path="/portfolio" element={<Portfolio />} />
       </Routes>
     </>
   );

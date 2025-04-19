@@ -7,7 +7,8 @@ export const fetchStockQuote = async (symbol) => {
     method: "GET",
     headers: {
       //"X-RapidAPI-Key": "a183e3f8fbmsh88a0b7800897231p183d3ejsn311f31d0e8e1",
-      "X-RapidAPI-Key": "68ccbe0c74msh7292dfc8f894f45p1c500djsn626db8f2cce7",
+      //"X-RapidAPI-Key": "68ccbe0c74msh7292dfc8f894f45p1c500djsn626db8f2cce7",
+      "X-RapidAPI-Key": "e7f598b7bcmsh2a060b4ba8f0210p14177cjsn77fb1b708d90",
       "X-RapidAPI-Host": "yahoo-finance15.p.rapidapi.com"
     }
   });
@@ -30,7 +31,8 @@ export const fetchStockDetails = async (symbol) => {
     method: "GET",
     headers: {
       //"X-RapidAPI-Key": "a183e3f8fbmsh88a0b7800897231p183d3ejsn311f31d0e8e1",
-      "X-RapidAPI-Key": "68ccbe0c74msh7292dfc8f894f45p1c500djsn626db8f2cce7",
+      //"X-RapidAPI-Key": "68ccbe0c74msh7292dfc8f894f45p1c500djsn626db8f2cce7",
+      "X-RapidAPI-Key": "e7f598b7bcmsh2a060b4ba8f0210p14177cjsn77fb1b708d90",
       "X-RapidAPI-Host": "yahoo-finance15.p.rapidapi.com"
     }
   });
@@ -52,7 +54,8 @@ export const fetchMostActiveStocks = async () => {
     method: "GET",
     headers: {
       //"X-RapidAPI-Key": "a183e3f8fbmsh88a0b7800897231p183d3ejsn311f31d0e8e1",
-      "X-RapidAPI-Key": "68ccbe0c74msh7292dfc8f894f45p1c500djsn626db8f2cce7",
+      //"X-RapidAPI-Key": "68ccbe0c74msh7292dfc8f894f45p1c500djsn626db8f2cce7",
+      "X-RapidAPI-Key": "e7f598b7bcmsh2a060b4ba8f0210p14177cjsn77fb1b708d90",
       "X-RapidAPI-Host": "yahoo-finance15.p.rapidapi.com"
     }
   });
@@ -80,7 +83,8 @@ export const fetchStockNews = async (tickers) => {
     headers: {
       //
       //"X-RapidAPI-Key": "a183e3f8fbmsh88a0b7800897231p183d3ejsn311f31d0e8e1",
-      "X-RapidAPI-Key": "68ccbe0c74msh7292dfc8f894f45p1c500djsn626db8f2cce7",
+      //"X-RapidAPI-Key": "68ccbe0c74msh7292dfc8f894f45p1c500djsn626db8f2cce7",
+      "X-RapidAPI-Key": "e7f598b7bcmsh2a060b4ba8f0210p14177cjsn77fb1b708d90",
       "X-RapidAPI-Host": "yahoo-finance15.p.rapidapi.com"
     }
   });

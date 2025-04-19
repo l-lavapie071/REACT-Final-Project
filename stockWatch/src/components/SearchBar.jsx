@@ -1,7 +1,10 @@
-// components/SearchBar.js
 import React, { useState } from "react";
 
-function SearchBar({ onSearch }) {
+function SearchBar({
+  onSearch,
+  buttonLabel = "Search",
+  placeholder = "Search Keyword...",
+}) {
   const [input, setInput] = useState("");
 
   const handleSubmit = (e) => {
@@ -17,12 +20,12 @@ function SearchBar({ onSearch }) {
         <input
           type="text"
           className="form-control"
-          placeholder="Search Keyword..."
+          placeholder={placeholder}
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
         <button type="submit" className="btn btn-primary">
-          Search
+          {buttonLabel}
         </button>
       </div>
     </form>

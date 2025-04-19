@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const StockCard = ({ stock }) => {
+const StockCard = ({ stock, averagePrice, quantity }) => {
   const navigate = useNavigate();
 
   if (!stock) return null;
@@ -36,8 +36,21 @@ const StockCard = ({ stock }) => {
     stock.postMarketChangePercent ??
     0;
 
-  const bid = stock.bid ?? "—";
-  const ask = stock.ask ?? "—";
+  const bid = stock.bid ?? null;
+  const ask = stock.ask ?? null;
+
+  // Calculate total holdings and earnings
+  const totalHoldings =
+    typeof quantity === "number" && typeof price === "number"
+      ? quantity * price
+      : 0;
+
+  const earnings =
+    typeof quantity === "number" &&
+    typeof price === "number" &&
+    typeof averagePrice === "number"
+      ? (price - averagePrice) * quantity
+      : 0;
 
   return (
     <div
@@ -64,14 +77,45 @@ const StockCard = ({ stock }) => {
               (
               {typeof percentChange === "number"
                 ? percentChange.toFixed(2)
-                : percentChange}
+                : percentChange}{" "}
               %)
             </div>
           </div>
         </div>
+
+        {/* Show Quantity, Average Price, Total Holdings, and Earnings if available */}
+        <div className="mt-2 small text-muted">
+          {quantity && (
+            <div>
+              <strong>Quantity:</strong> {quantity}
+            </div>
+          )}
+          {averagePrice && (
+            <div>
+              <strong>Average Price:</strong> ${averagePrice.toFixed(2)}
+            </div>
+          )}
+          {totalHoldings > 0 && (
+            <div>
+              <strong>Total Holdings:</strong> ${totalHoldings.toFixed(2)}
+            </div>
+          )}
+          {typeof earnings === "number" && quantity && averagePrice && (
+            <div style={{ color: earnings >= 0 ? "green" : "red" }}>
+              <strong>{earnings >= 0 ? "Profit" : "Loss"}:</strong> $
+              {Math.abs(earnings).toFixed(2)}
+            </div>
+          )}
+        </div>
+
+        {/* Only show Bid and Ask if they are available */}
         <div className="mt-2 small text-muted d-flex justify-content-between">
-          <span>Bid: ${typeof bid === "number" ? bid.toFixed(2) : bid}</span>
-          <span>Ask: ${typeof ask === "number" ? ask.toFixed(2) : ask}</span>
+          {bid && (
+            <span>Bid: ${typeof bid === "number" ? bid.toFixed(2) : bid}</span>
+          )}
+          {ask && (
+            <span>Ask: ${typeof ask === "number" ? ask.toFixed(2) : ask}</span>
+          )}
         </div>
       </div>
     </div>
